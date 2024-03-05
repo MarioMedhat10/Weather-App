@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/screens/no_weather_screen.dart';
+import 'package:weather_app/screens/weather_info_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,7 +18,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
-      body: NoWeatherScreen(),
+      body: WeatherInfoScreen(),
     );
   }
 }

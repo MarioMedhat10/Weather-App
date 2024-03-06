@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/services/weather_service.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -36,8 +39,11 @@ class SearchScreen extends StatelessWidget {
             // onChanged: (value) {
             //   log(value);
             // },
-            onSubmitted: (value) {
-              log(value);
+            onSubmitted: (value) async {
+              WeatherModel weatherModel = await WeatherService(Dio())
+                  .getCurrentWeather(cityName: value);
+
+              Navigator.of(context).pop();
             },
             decoration: InputDecoration(
               // border: OutlineInputBorder(

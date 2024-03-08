@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/services/weather_service.dart';
 
@@ -40,8 +42,8 @@ class SearchScreen extends StatelessWidget {
             //   log(value);
             // },
             onSubmitted: (value) async {
-              WeatherModel weatherModel = await WeatherService(Dio())
-                  .getCurrentWeather(cityName: value);
+              var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
+              getWeatherCubit.getWeather(cityName: value);
 
               Navigator.of(context).pop();
             },

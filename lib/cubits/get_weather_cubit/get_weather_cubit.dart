@@ -12,7 +12,7 @@ class GetWeatherCubit extends Cubit<WeatherState>{
   * we use this way to pass this object throw forked tree [شجرة متفرعة]
   *   of widgets
   * */
-  late WeatherModel weatherModel;
+  WeatherModel? weatherModel;
 
   getWeather({required String cityName}) async {
     try {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
+import 'package:weather_app/cubits/get_weather_cubit/get_weather_states.dart';
 import 'package:weather_app/screens/home_screen.dart';
 
 void main() {
@@ -19,17 +20,28 @@ class WeatherApp extends StatelessWidget {
       *   a GetWeatherCubit so it can use BlocProvider
       * */
       child: Builder(
-        builder: (context) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            useMaterial3: false,
-            primarySwatch: getThemeColor(
-              BlocProvider.of<GetWeatherCubit>(context)
-                  .weatherModel?.weatherCondition,
+        builder: (context) =>
+            /*
+            * putting BlocBuilder here is for rebuilding
+            *  the color after searching
+            * */
+            BlocBuilder<GetWeatherCubit, WeatherState>(
+              builder: (context, state) {
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  theme: ThemeData(
+                    useMaterial3: false,
+                    primarySwatch: getThemeColor(
+                      BlocProvider
+                          .of<GetWeatherCubit>(context)
+                          .weatherModel
+                          ?.weatherCondition,
+                    ),
+                  ),
+                  home: HomeScreen(),
+                );
+              },
             ),
-          ),
-          home: HomeScreen(),
-        ),
       ),
     );
   }
@@ -63,8 +75,8 @@ class WeatherApp extends StatelessWidget {
 // }
 
 MaterialColor? getThemeColor(String? condition) {
-  if (condition == null){
-    return Colors.blue;
+  if (condition == null) {
+    return Colors.grey;
   }
   switch (condition) {
     case "Sunny":
@@ -89,10 +101,6 @@ MaterialColor? getThemeColor(String? condition) {
       return Colors.grey;
     case "Thundery outbreaks possible":
       return Colors.amber;
-    case "Blowing snow":
-      return Colors.white as MaterialColor;
-    case "Blizzard":
-      return Colors.white as MaterialColor;
     case "Fog":
       return Colors.grey;
     case "Freezing fog":
@@ -166,6 +174,6 @@ MaterialColor? getThemeColor(String? condition) {
     case "Moderate or heavy snow with thunder":
       return Colors.amber;
     default:
-      return Colors.blue;
+      return Colors.grey;
   }
 }

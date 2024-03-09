@@ -15,11 +15,6 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarIconBrightness: Brightness.light,
-        ),
         title: const Text(
           'Search a City',
           style: TextStyle(fontWeight: FontWeight.w600),
@@ -30,7 +25,7 @@ class SearchScreen extends StatelessWidget {
         child: Center(
           child: TextField(
             // to customize the cursor color
-            cursorColor: Colors.blue,
+            cursorColor: Theme.of(context).primaryColor,
             /*
             * to access the value inside text field
             *   there are two ways :
@@ -60,7 +55,7 @@ class SearchScreen extends StatelessWidget {
               enabledBorder: OutlineInputBorder(
                 // borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide(
-                  color: Colors.blue,
+                  color: Theme.of(context).primaryColor,
                   width: 3,
                 ),
               ),
@@ -70,7 +65,7 @@ class SearchScreen extends StatelessWidget {
               focusedBorder: OutlineInputBorder(
                 // borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide(
-                  color: Colors.blue,
+                  color: Theme.of(context).primaryColor,
                   width: 3,
                 ),
               ),
@@ -87,9 +82,9 @@ class SearchScreen extends StatelessWidget {
               suffixIcon: Icon(
                 Icons.search,
               ),
-              suffixIconColor: Colors.blue,
+              suffixIconColor: Theme.of(context).primaryColor,
               labelText: 'Search',
-              labelStyle: TextStyle(color: Colors.blue),
+              labelStyle: TextStyle(color: Theme.of(context).primaryColor),
               /*
               * to customize the width and height of text input field
               *  we need to use content padding

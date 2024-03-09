@@ -9,6 +9,7 @@ import 'package:weather_app/screens/weather_info_screen.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

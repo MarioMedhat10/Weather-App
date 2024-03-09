@@ -5,8 +5,10 @@ import 'package:weather_app/models/weather_model.dart';
 
 class WeatherInfoScreen extends StatelessWidget {
   const WeatherInfoScreen({
-    super.key,
+    super.key, required this.weather,
   });
+
+  final WeatherModel weather;
 
   @override
   Widget build(BuildContext context) {

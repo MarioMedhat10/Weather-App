@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 
 class WeatherInfoScreen extends StatelessWidget {
   const WeatherInfoScreen({
@@ -7,20 +9,22 @@ class WeatherInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
+
     return Padding(
       padding: const EdgeInsets.all(25.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Cairo',
+            weatherModel.cityName,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 32,
             ),
           ),
           Text(
-            'updated at 14:00',
+            'updated at ${weatherModel.date.hour}:${weatherModel.date.minute}',
             style: TextStyle(
               fontSize: 22,
             ),
@@ -31,24 +35,24 @@ class WeatherInfoScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                  'assets/images/clear.png',
+              Image.network(
+                  'https:${weatherModel.image!}',
               ),
               Text(
-                '35',
+                weatherModel.temp.toString(),
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'MaxTemp 40',
+                    'MaxTemp: ${weatherModel.maxTemp.round()}',
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Text(
-                    'MinTemp  33',
+                    'MinTemp:  ${weatherModel.minTemp.round()}',
                   ),
                 ],
               ),
@@ -58,7 +62,7 @@ class WeatherInfoScreen extends StatelessWidget {
             height: 20,
           ),
           Text(
-            'Sunny',
+            weatherModel.weatherCondition,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 32,

@@ -74,7 +74,7 @@ class WeatherApp extends StatelessWidget {
 //   }
 // }
 
-MaterialColor? getThemeColor(String? condition) {
+MaterialColor getThemeColor(String? condition) {
   if (condition == null) {
     return Colors.grey;
   }

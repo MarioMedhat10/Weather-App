@@ -24,7 +24,7 @@ class WeatherInfoScreen extends StatelessWidget {
             ),
           ),
           Text(
-            'updated at 14:00',
+            'updated at ${weatherModel.date.hour}:${weatherModel.date.minute}',
             style: TextStyle(
               fontSize: 22,
             ),

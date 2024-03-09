@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
+import 'package:weather_app/models/weather_model.dart';
 
 class WeatherInfoScreen extends StatelessWidget {
   const WeatherInfoScreen({
@@ -9,7 +10,7 @@ class WeatherInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
+    WeatherModel? weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel!;
 
     return Padding(
       padding: const EdgeInsets.all(25.0),

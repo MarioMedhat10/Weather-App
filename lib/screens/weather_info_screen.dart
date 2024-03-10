@@ -34,18 +34,18 @@ class WeatherInfoScreen extends StatelessWidget {
           children: [
             Text(
               weatherModel.cityName,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
               ),
             ),
             Text(
               'updated at ${weatherModel.date.hour}:${weatherModel.date.minute}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 22,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -56,7 +56,7 @@ class WeatherInfoScreen extends StatelessWidget {
                 ),
                 Text(
                   weatherModel.temp.round().toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ class WeatherInfoScreen extends StatelessWidget {
                     Text(
                       'MaxTemp: ${weatherModel.maxTemp.round()}',
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Text(
@@ -74,12 +74,12 @@ class WeatherInfoScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
               weatherModel.weatherCondition,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
               ),

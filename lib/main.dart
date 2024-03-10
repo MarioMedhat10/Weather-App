@@ -38,7 +38,7 @@ class WeatherApp extends StatelessWidget {
                           ?.weatherCondition,
                     ),
                   ),
-                  home: HomeScreen(),
+                  home: const HomeScreen(),
                 );
               },
             ),

@@ -1,12 +1,6 @@
-import 'dart:developer';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app/models/weather_model.dart';
-import 'package:weather_app/services/weather_service.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -79,7 +73,7 @@ class SearchScreen extends StatelessWidget {
               * prefixIcon -> icon appear in the left of input field
               * suffixIcon -> icon appear in the right of input field
               * */
-              suffixIcon: Icon(
+              suffixIcon: const Icon(
                 Icons.search,
               ),
               suffixIconColor: Theme.of(context).primaryColor,
@@ -89,7 +83,7 @@ class SearchScreen extends StatelessWidget {
               * to customize the width and height of text input field
               *  we need to use content padding
               * */
-              contentPadding: EdgeInsets.symmetric(
+              contentPadding: const EdgeInsets.symmetric(
                 vertical: 28,
                 horizontal: 16,
               ),

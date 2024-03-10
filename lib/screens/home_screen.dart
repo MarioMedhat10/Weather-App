@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => SearchScreen(),
+                  builder: (context) => const SearchScreen(),
                 ),
               );
             },
@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
       body: BlocBuilder<GetWeatherCubit, WeatherState>(
         builder: (context, state) {
           if (state is WeatherInitialState) {
-            return NoWeatherScreen();
+            return const NoWeatherScreen();
           } else if (state is WeatherLoadedState) {
             /*
             * here we need to put weatherModel object to make the widget
@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
               weather: state.weatherModel,
             );
           } else {
-            return Center(
+            return const Center(
               child: Text(
                 'Oops, there was an error',
                 style: TextStyle(

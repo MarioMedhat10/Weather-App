@@ -53,13 +53,9 @@ class HomeScreen extends StatelessWidget {
               weather: state.weatherModel,
             );
           } else {
-            return const Center(
-              child: Text(
-                'Oops, there was an error',
-                style: TextStyle(
-                  fontSize: 25,
-                ),
-              ),
+            return const NoWeatherScreen(
+              text1: 'Oops there was an error 😥',
+              text2: 'Try again later',
             );
           }
         },

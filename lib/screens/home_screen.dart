@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is WeatherInitialState) {
             return const NoWeatherScreen();
-          } else if (state is WeatherLoadedState) {
+          } else if (state is WeatherSuccessState) {
             /*
             * here we need to put weatherModel object to make the widget
             *   non const so it can be rebuilt after every search

@@ -3,25 +3,30 @@ import 'package:flutter/material.dart';
 class NoWeatherScreen extends StatelessWidget {
   const NoWeatherScreen({
     super.key,
+    this.text1,
+    this.text2,
   });
+
+  final String? text1;
+  final String? text2;
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'There is no weather 😔',
-            style: TextStyle(
+            text1 ?? 'There is no weather 😔',
+            style: const TextStyle(
               fontSize: 25,
             ),
           ),
           Text(
-            'Start searching Now 🔍',
-            style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold
+            text2 ?? 'Start searching Now 🔍',
+            style: const TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],

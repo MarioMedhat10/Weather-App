@@ -37,7 +37,12 @@ class HomeScreen extends StatelessWidget {
       ),
       body: BlocBuilder<GetWeatherCubit, WeatherState>(
         builder: (context, state) {
-          if (state is WeatherInitialState) {
+          if (state is WeatherLoadingState) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          else if (state is WeatherInitialState) {
             return const NoWeatherScreen();
           } else if (state is WeatherSuccessState) {
             /*
@@ -48,13 +53,9 @@ class HomeScreen extends StatelessWidget {
               weather: state.weatherModel,
             );
           } else {
-            return const Center(
-              child: Text(
-                'Oops, there was an error',
-                style: TextStyle(
-                  fontSize: 25,
-                ),
-              ),
+            return const NoWeatherScreen(
+              text1: 'Oops there was an error 😥',
+              text2: 'Try again later',
             );
           }
         },

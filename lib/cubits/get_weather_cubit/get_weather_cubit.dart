@@ -15,11 +15,12 @@ class GetWeatherCubit extends Cubit<WeatherState>{
   WeatherModel? weatherModel;
 
   getWeather({required String cityName}) async {
+    emit(WeatherLoadingState());
     try {
       weatherModel = await WeatherService(Dio())
           .getCurrentWeather(cityName: cityName);
 
-      emit(WeatherLoadedState(weatherModel!));
+      emit(WeatherSuccessState(weatherModel!));
     } catch (e) {
       emit(WeatherFailureState(
         e.toString()

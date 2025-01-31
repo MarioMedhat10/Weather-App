@@ -37,7 +37,12 @@ class HomeScreen extends StatelessWidget {
       ),
       body: BlocBuilder<GetWeatherCubit, WeatherState>(
         builder: (context, state) {
-          if (state is WeatherInitialState) {
+          if (state is WeatherLoadingState) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          else if (state is WeatherInitialState) {
             return const NoWeatherScreen();
           } else if (state is WeatherSuccessState) {
             /*
